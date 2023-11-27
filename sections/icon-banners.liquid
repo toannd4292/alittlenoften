@@ -98,6 +98,7 @@
     </slider-component>
     {%- assign length = section.blocks.size | divided_by: 1.0 | ceil -%}
     {%- if section.settings.swipe_on_mobile and length > 1 -%}
+    
     <div class="mt40 grid slider__buttons slider--phone">
       <div class="col-12">
         {%- liquid

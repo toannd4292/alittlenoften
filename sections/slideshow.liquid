@@ -147,7 +147,7 @@
           endif
           endcapture
         -%}
-        {{ html_tag_open }} id="block-{{ block.id }}" class="clear-underline for-buttons__item--js slideshow {{ image_hover_scaling_up }} hover-area{% if forloop.first %} active slideshow-active-in-start{% endif %}">
+        {{ html_tag_open }} aria-label="Read more" id="block-{{ block.id }}" class="clear-underline for-buttons__item--js slideshow {{ image_hover_scaling_up }} hover-area{% if forloop.first %} active slideshow-active-in-start{% endif %}">
           {%- if block.settings.image == blank -%}
           <div class="image-hover-scaling__image border__radius placeholder__svg--bg">
             {%- render "icons-placeholder-other", icon_name:'lifestyle' -%}
