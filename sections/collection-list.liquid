@@ -173,7 +173,7 @@
                    width="{{ image.width }}"
                    height="{{ image.height }}"
                    loading="lazy"
-                   alt="{{ image.alt | escape }}"
+                   alt="{{ image.alt | replace: '&', '' | replace: '!', '' | escape }}"
                    {% render "additional-image-attributes" %}
                    >
               {%- else  -%}

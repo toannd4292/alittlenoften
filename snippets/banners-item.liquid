@@ -33,7 +33,7 @@
   endcapture
 -%}
 
-{{ html_tag_open }} id="image-banner-block-{{ block.id }}" class="clear-underline image-banner hover-area {{ image_hover_scaling_up }}{% if is_slider %} slideshow for-buttons__item--js{% if is_active %} slideshow-active-in-start active{% endif %}{% endif %}">
+{{ html_tag_open }} aria-label="Read more" id="image-banner-block-{{ block.id }}" class="clear-underline image-banner hover-area {{ image_hover_scaling_up }}{% if is_slider %} slideshow for-buttons__item--js{% if is_active %} slideshow-active-in-start active{% endif %}{% endif %}">
   {%- if block.settings.image == blank -%}
   <div class="image-hover-scaling__box">
     <div class="image-hover-scaling__image placeholder__svg--bg border__radius"{% if section.settings.image_ratio != 'auto' %} style="--aspect-ratio: {{section.settings.image_ratio}};"{% endif %}>

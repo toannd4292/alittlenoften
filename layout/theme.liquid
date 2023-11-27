@@ -361,6 +361,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         setTimeout(function(){document.querySelector('footer').classList.add('footer-loaded')}, 700);
       });
     </script>
+    {% include 'vital-loader' %}
   </head>
 
   <body>
@@ -455,5 +456,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <recently-viewed-products-record data-count="{{ settings.recently_viewed_products_limit }}"></recently-viewed-products-record>
       <script src="{{ 'component-recently-viewed-products.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script>
+      var scripts = document.querySelectorAll('script');
+      scripts.forEach(function(script) {
+          if (script.src.includes('shopifyChatV1.js')) {
+              script.async = true;
+          }
+      });
+    </script>
   </body>
 </html>
