@@ -1,0 +1,2665 @@
+{% comment %}
+[[ QQ - Alternative Carousel for Products ]] [[ Section for Shopify Websites to display Testimonials ]]
+Author: qwiqode.com
+Created: 09.20.2022 Version: 1.0
+Company website: qwiqode.com
+Email: hello@qwiqode.com
+* (c) Copyright by Studio Umbrella Inc. /
+{% endcomment %}
+{% if request.design_mode == true %}
+<p class="QQ-JS-init-msg" style="display:block;padding: 10px 15px;text-align: center;max-width: 450px;background-color: #d5d5d5;color: red;border: 1px solid red;border-radius: 10px;margin: 0 auto;">Please save the Theme Editor before adding content or changing settings in order to initiate functionality.</p>
+{% endif %}
+  {% liquid
+    assign carouselAutoplay = section.settings.carousel_autoplay
+    assign carouselSpeed = section.settings.carousel_speed
+    assign carouselSlidePadding = section.settings.carousel_slide_padding
+    assign carouselSlidePaddingMobile = section.settings.carousel_slide_padding_mobile
+    assign contentMaxWidth = section.settings.content_max_width
+    assign sectionClass = section.settings.section_class
+    assign sectionWidth = section.settings.section_width
+    assign sectionMarginTop = section.settings.section_margin_top
+	assign sectionMarginTopMobile = section.settings.section_margin_top_mobile
+	assign sectionMarginBottom = section.settings.section_margin_bottom
+	assign sectionMarginBottomMobile = section.settings.section_margin_bottom_mobile
+    assign sectionPaddingTop = section.settings.section_padding_top
+    assign sectionPaddingTopMobile = section.settings.section_padding_top_mobile
+    assign sectionPaddingHorizontal = section.settings.section_padding_horizontal
+    assign sectionPaddingHorizontalMobile = section.settings.section_padding_horizontal_mobile
+    assign sectionPaddingBottom = section.settings.section_padding_bottom
+    assign sectionPaddingBottomMobile = section.settings.section_padding_bottom_mobile
+    assign sectionBackgroundColor = section.settings.section_background_color
+    assign sectionHeaderAlignment = section.settings.section_header_text_alignment
+    assign sectionHeaderAlignmentMobile = section.settings.section_header_text_alignment_mobile
+    assign sectionHeaderPaddingTop = section.settings.section_header_padding_top
+    assign sectionHeaderPaddingTopMobile = section.settings.section_header_padding_top_mobile
+    assign sectionHeaderPaddingBottom = section.settings.section_header_padding_bottom
+    assign sectionHeaderPaddingBottomMobile = section.settings.section_header_padding_bottom_mobile
+    assign sectionHeaderPaddingLeft = section.settings.section_header_padding_left
+    assign sectionHeaderPaddingLeftMobile = section.settings.section_header_padding_left_mobile
+    assign sectionHeaderPaddingRight = section.settings.section_header_padding_right
+    assign sectionHeaderPaddingRightMobile = section.settings.section_header_padding_right_mobile
+    assign sectionTitle = section.settings.section_title
+    assign sectionTitleType = section.settings.section_title_type
+    assign sectionTitleColor = section.settings.section_title_color
+    assign sectionTitleAlignment = section.settings.section_title_alignment
+    assign sectionTitleAlignmentMobile = section.settings.section_title_alignment_mobile
+    assign sectionTitleCustomFont = section.settings.section_title_custom_font
+    assign sectionTitleFont = section.settings.section_title_font
+    assign sectionTitleFontName = section.settings.section_title_font_name
+    assign sectionTitleFontWeight = section.settings.section_title_font_weight
+    assign sectionTitleMarginTop = section.settings.section_title_margin_top
+    assign sectionTitleMarginTopMobile = section.settings.section_title_margin_top_mobile
+    assign sectionTitleMarginBottom = section.settings.section_title_margin_bottom
+    assign sectionTitleMarginBottomMobile = section.settings.section_title_margin_bottom_mobile
+    assign sectionTitleFontSize = section.settings.section_title_font_size
+    assign sectionTitleFontSizeMobile = section.settings.section_title_font_size_mobile
+    assign sectionTitleLineHeight = section.settings.section_title_line_height
+    assign sectionTitleLineHeightMobile = section.settings.section_title_line_height_mobile
+    assign sectionTitleLetterSpacing = section.settings.section_title_letter_spacing
+    assign sectionTitleLetterSpacingMobile = section.settings.section_title_letter_spacing_mobile
+    assign sectionTextblock = section.settings.section_textblock
+    assign sectionTextblockColor = section.settings.section_textblock_color
+    assign sectionTextblockCustomFont = section.settings.section_textblock_custom_font
+    assign sectionTextblockFont = section.settings.section_textblock_font
+    assign sectionTextblockFontName = section.settings.section_textblock_font_name
+    assign sectionTextblockFontWeight = section.settings.section_textblock_font_weight
+    assign sectionTextblockMarginTop = section.settings.section_textblock_margin_top
+    assign sectionTextblockMarginTopMobile = section.settings.section_textblock_margin_top_mobile
+    assign sectionTextblockMarginBottom = section.settings.section_textblock_margin_bottom
+    assign sectionTextblockMarginBottomMobile = section.settings.section_textblock_margin_bottom_mobile
+    assign sectionTextblockFontSize = section.settings.section_textblock_font_size
+    assign sectionTextblockFontSizeMobile = section.settings.section_textblock_font_size_mobile
+    assign sectionTextblockLineHeight = section.settings.section_textblock_line_height
+    assign sectionTextblockLineHeightMobile = section.settings.section_textblock_line_height_mobile
+    assign sectionTextblockLetterSpacing = section.settings.section_textblock_letter_spacing
+    assign sectionTextblockLetterSpacingMobile = section.settings.section_textblock_letter_spacing_mobile
+    assign sectionButtonLabel = section.settings.section_button_label
+    if sectionButtonLabel != blank 
+        assign sectionButtonUrl = section.settings.section_button_url
+        assign sectionButtonTab = section.settings.section_button_tab
+        if sectionButtonTab == true
+            assign sectionButtonAttributes = ' target="_blank"'
+        else
+            assign sectionButtonAttributes = ''
+        endif
+        if sectionHeaderAlignment == 'left'
+            assign sectionButtonAlignment = 'flex-start'
+        elsif sectionHeaderAlignment == 'right'
+            assign sectionButtonAlignment = 'flex-end'
+        else 
+            assign sectionButtonAlignment = sectionHeaderAlignment
+        endif 
+        if sectionHeaderAlignmentMobile == 'left'
+            assign sectionButtonAlignmentMobile = 'flex-start'
+        elsif sectionHeaderAlignmentMobile == 'right'
+            assign sectionButtonAlignmentMobile = 'flex-end'
+        else 
+            assign sectionButtonAlignmentMobile = sectionHeaderAlignmentMobile
+        endif 
+        assign sectionButtonCustomFont = section.settings.section_button_custom_font
+        assign sectionButtonFont = section.settings.section_button_font
+        assign sectionButtonFontName = section.settings.section_button_font_name
+        assign sectionButtonFontWeight = section.settings.section_button_font_weight
+        assign sectionButtonMaxWidth = section.settings.section_button_max_width
+        assign sectionButtonFontSize = section.settings.section_button_font_size
+        assign sectionButtonFontSizeMobile = section.settings.section_button_font_size_mobile
+        assign sectionButtonLetterSpacing = section.settings.section_button_letter_spacing
+        assign sectionButtonLetterSpacingMobile = section.settings.section_button_letter_spacing_mobile
+        assign sectionButtonPaddingHorizontal = section.settings.section_button_padding_horizontal
+        assign sectionButtonPaddingVertical =  section.settings.section_button_padding_vertical
+        assign sectionButtonMarginTop = section.settings.section_button_margin_top
+        assign sectionButtonMarginTopMobile = section.settings.section_button_margin_top_mobile
+        assign sectionButtonMarginBottom = section.settings.section_button_margin_bottom
+        assign sectionButtonMarginBottomMobile = section.settings.section_button_margin_bottom_mobile
+        assign sectionButtonBorder = section.settings.section_button_border_width
+        assign sectionButtonRadius = section.settings.section_button_radius
+        assign sectionButtonBackgroundColor = section.settings.section_button_background_color
+        assign sectionButtonBackgroundColorHover = section.settings.section_button_background_color_hover
+        assign sectionButtonColor = section.settings.section_button_text_color
+        assign sectionButtonColorHover = section.settings.section_button_text_color_hover
+        assign sectionButtonBorderColor = section.settings.section_button_border_color
+        assign sectionButtonBorderColorHover = section.settings.section_button_border_color_hover
+    endif 
+    assign imageSize = section.settings.image_size
+    assign imageWidth = section.settings.image_width
+    assign imageBorderRadius = section.settings.image_border_radius
+    assign blocksTextAlignment = section.settings.blocks_text_alignment
+    assign blocksTextAlignmentMobile = section.settings.blocks_text_alignment_mobile
+    assign arrowsAlignment = section.settings.arrows_alignment
+    if sectionTitleAlignment == 'left'
+        assign arrowWrapperAlignment = 'flex-start'
+    elsif sectionTitleAlignment == 'right'
+        assign arrowWrapperAlignment = 'flex-end'
+    else
+        assign arrowWrapperAlignment = sectionTitleAlignment
+    endif
+    if blocksTextAlignment == 'left'
+        assign buttonAlignment = 'flex-start'
+    elsif blocksTextAlignment == 'right'
+        assign buttonAlignment = 'flex-end'
+    else
+        assign buttonAlignment = blocksTextAlignment
+    endif
+    if blocksTextAlignmentMobile == 'left'
+        assign buttonAlignmentMobile = 'flex-start'
+    elsif blocksTextAlignmentMobile == 'right'
+        assign buttonAlignmentMobile = 'flex-end'
+    else
+        assign buttonAlignmentMobile = blocksTextAlignmentMobile
+    endif
+    assign blocksMarginTop = section.settings.blocks_margin_top
+    assign blocksMarginTopMobile = section.settings.blocks_margin_top_mobile
+    assign blocksMarginBottom = section.settings.blocks_margin_bottom
+    assign blocksMarginBottomMobile = section.settings.blocks_margin_bottom_mobile
+    assign blockTitleDisplay = section.settings.block_title_display
+    if blockTitleDisplay == true 
+        assign blockTitleType = section.settings.block_title_type
+        assign blockTitleColor = section.settings.block_title_color
+        assign blockTitleCustomFont = section.settings.block_title_custom_font
+        assign blockTitleFont = section.settings.block_title_font
+        assign blockTitleFontName = section.settings.block_title_font_name
+        assign blockTitleFontWeight = section.settings.block_title_font_weight
+        assign blockTitleMinHeight = section.settings.block_title_min_height
+        assign blockTitleMinHeightMobile = section.settings.block_title_min_height_mobile
+        assign blockTitleMarginTop = section.settings.block_title_margin_top
+        assign blockTitleMarginTopMobile = section.settings.block_title_margin_top_mobile
+        assign blockTitleMarginBottom = section.settings.block_title_margin_bottom
+        assign blockTitleMarginBottomMobile = section.settings.block_title_margin_bottom_mobile
+        assign blockTitleFontSize = section.settings.block_title_font_size
+        assign blockTitleFontSizeMobile = section.settings.block_title_font_size_mobile
+        assign blockTitleLineHeight = section.settings.block_title_line_height
+        assign blockTitleLineHeightMobile = section.settings.block_title_line_height_mobile
+        assign blockTitleLetterSpacing = section.settings.block_title_letter_spacing
+        assign blockTitleLetterSpacingMobile = section.settings.block_title_letter_spacing_mobile
+    endif 
+    assign productPriceDisplay = section.settings.product_price_display
+    if productPriceDisplay == true 
+	    assign productPriceFrom = section.settings.product_price_from
+	    assign productPriceFromLabel = section.settings.product_price_from_label
+        assign productPriceCustomFont = section.settings.product_price_custom_font
+        assign productPriceFont = section.settings.product_price_font
+        assign productPriceFontName = section.settings.product_price_font_name
+        assign productPriceFontWeight = section.settings.product_price_font_weight
+        assign productPriceColor = section.settings.product_price_color
+        assign productPriceFontSize = section.settings.product_price_font_size
+        assign productPriceFontSizeMobile = section.settings.product_price_font_size_mobile
+        assign productPriceLineHeight = section.settings.product_price_line_height
+        assign productPriceLineHeightMobile = section.settings.product_price_line_height_mobile
+        assign productPriceLetterSpacing = section.settings.product_price_letter_spacing
+        assign productPriceLetterSpacingMobile = section.settings.product_price_letter_spacing_mobile
+        assign productPriceMarginBottom = section.settings.product_price_margin_bottom
+        assign productPriceMarginBottomMobile = section.settings.product_price_margin_bottom_mobile
+        assign productComparePriceColor = section.settings.product_compare_price_color
+        assign productComparePriceFontSize = section.settings.product_compare_price_font_size
+        assign productComparePriceFontSizeMobile = section.settings.product_compare_price_font_size_mobile
+    endif 
+    assign blockButtonDisplay = section.settings.block_button_display
+    if blockButtonDisplay == true 
+        assign blockButtonLabel = section.settings.block_button_label
+        assign blockButtonTab = section.settings.block_button_tab
+        assign blockButtonCustomFont = section.settings.block_button_custom_font
+        assign blockButtonFont = section.settings.block_button_font
+        assign blockButtonFontName = section.settings.block_button_font_name
+        assign blockButtonFontWeight = section.settings.block_button_font_weight
+        assign blockButtonMaxWidth = section.settings.block_button_max_width
+        assign blockButtonFontSize = section.settings.block_button_font_size
+        assign blockButtonFontSizeMobile = section.settings.block_button_font_size_mobile
+        assign blockButtonLetterSpacing = section.settings.block_button_letter_spacing
+        assign blockButtonLetterSpacingMobile = section.settings.block_button_letter_spacing_mobile
+        assign blockButtonPaddingHorizontal = section.settings.block_button_padding_horizontal
+        assign blockButtonPaddingVertical =  section.settings.block_button_padding_vertical
+        assign blockButtonMarginTop = section.settings.block_button_margin_top
+        assign blockButtonMarginTopMobile = section.settings.block_button_margin_top_mobile
+        assign blockButtonMarginBottom = section.settings.block_button_margin_bottom
+        assign blockButtonMarginBottomMobile = section.settings.block_button_margin_bottom_mobile
+        assign blockButtonBorder = section.settings.block_button_border_width
+        assign blockButtonRadius = section.settings.block_button_radius
+        assign blockButtonBackgroundColor = section.settings.block_button_background_color
+        assign blockButtonBackgroundColorHover = section.settings.block_button_background_color_hover
+        assign blockButtonColor = section.settings.block_button_text_color
+        assign blockButtonColorHover = section.settings.block_button_text_color_hover
+        assign blockButtonBorderColor = section.settings.block_button_border_color
+        assign blockButtonBorderColorHover = section.settings.block_button_border_color_hover
+    endif 
+    assign divID = section.id | replace: 'template--', '' | replace: 'shopify-section-', '' | replace: '__', '' | prepend: 'qq'
+    assign blocksAmount = section.blocks.size
+    assign slidesToShow = section.settings.carousel_slides_to_show
+    assign showTitles = section.settings.carousel_show_titles
+    for block in section.blocks
+        if block.type == 'collection'
+            assign collection = collections[block.settings.collection] 
+            assign collectionLimit = block.settings.collection_limit 
+            assign numOfProducts = collection.products.size 
+            if numOfProducts > collectionLimit
+                assign numOfProducts = collectionLimit
+            endif
+            assign blocksAmount = blocksAmount | plus: numOfProducts | minus: 1
+        endif 
+    endfor
+    assign resizeSlider = false
+    if sectionWidth == 'fullwidth'
+        if blocksAmount > slidesToShow
+            comment
+                assign slidesToShow = slidesToShow | plus: 1
+            endcomment
+            assign resizeSlider = true
+        endif
+    endif
+    if blocksAmount > 3
+        assign mobileBlocks = blocksAmount | divided_by: 2
+    elsif blocksAmount <= 3
+        assign mobileBlocks = 1
+    else
+        assign mobileBlocks = blocksAmount
+    endif
+    if slidesToShow > blocksAmount
+        assign slidesToShow = blocksAmount
+        assign resizeSlider = false
+    endif
+    assign slidesToShowMobile = section.settings.carousel_slides_to_show_mobile
+    assign carouselArrowsLineColor = section.settings.carousel_arrows_color_line
+    assign carouselArrowsBgColor = section.settings.carousel_arrows_color_bg
+    assign carouselDotsColor = section.settings.dots_color
+%}
+{% capture carouselArrows %}
+    {% liquid
+        assign arrowLeftImage = section.settings.arrow_left
+        assign arrowLeftImageUrl = arrowLeftImage | img_url: '32x32', crop: 'center'
+        if arrowLeftImage.alt != blank 
+            assign arrowLeftImageAlt = 'alt="' | append: arrowLeftImage.alt | append: '"'
+        else 
+            assign arrowLeftImageAlt = ''
+        endif
+            if arrowLeftImageUrl != blank 
+                assign customLeft = 'qq-custom-left'
+            else
+                assign customLeft = ''
+            endif
+        assign arrowRightImage = section.settings.arrow_right
+        if arrowRightImage.alt != blank 
+            assign arrowRightImageAlt = 'alt="' | append: arrowRightImage.alt | append: '"'
+        else 
+            assign arrowRightImageAlt = ''
+        endif
+        assign arrowRightImageUrl = arrowRightImage | img_url: '32x32', crop: 'center'
+            if arrowRightImageUrl != blank 
+                assign customRight = 'qq-custom-right'
+            else
+                assign customRight = ''
+            endif
+    %}
+    <div class="qq-carousel-arrows qq-{{arrowsAlignment}} qq-hidden">
+        <div class="btn btn_zoom qq-carousel-arrow qq-carousel-prev">
+            <svg class="theme-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.97392 8.94868L9.39195 5.48679L7.92399 4L2 10L7.92399 16L9.39195 14.5132L5.97392 11.0513H18V8.94868H5.97392Z" fill="#142C73"></path></svg>
+        </div>
+        <div class="btn btn_zoom qq-carousel-arrow qq-carousel-next">
+            <svg class="theme-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.0261 8.94868L10.608 5.48679L12.076 4L18 10L12.076 16L10.608 14.5132L14.0261 11.0513H2V8.94868H14.0261Z" fill="#142C73"></path></svg>
+        </div>
+    </div>
+{% endcapture %}
+<div class="qq-section-wrap-{{sectionWidth}} {{sectionClass}} "
+id="{{divID}}">
+    <div class="qq-alternative-carousel-inner">
+        <div>
+            <div class="qq-alternative-carousel-header">
+                {% if sectionTitle != blank %}
+                    <div class="qq-title">{{sectionTitle}}</div>
+                {% endif %}
+                {% if sectionTextblock != blank %}
+                    <div class="qq-textblock">{{sectionTextblock}}</div>
+                {% endif %}
+                {% if sectionButtonLabel != blank %}
+                    {% capture sectionButton %}
+                    <div class="qq-section-button">
+                        <div class="qq-button-wrapper">
+                            <a class="qq-btn btn btn_zoom" href="{{sectionButtonUrl}}"{{sectionButtonAttributes}}><span>{{sectionButtonLabel}}</span></a>
+                        </div>
+                    </div>
+                    {% endcapture %}
+                    {{sectionButton}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="qq-alternative-carousel-blocks"
+        data-showTitles="{{showTitles}}"
+        data-slidesToShow="{{slidesToShow}}"
+        data-sectionWidth="{{sectionWidth}}"
+        data-carouselAutoplay="{{carouselAutoplay}}"
+        data-carouselSpeed="{{carouselSpeed}}"
+        data-carouselMobileBlocks="{{slidesToShowMobile}}"
+        data-carouselResize="{{resizeSlider}}">
+            {% for block in section.blocks %}
+                {% assign blockAttributes = block.shopify_attributes %}          
+                {% if block.type == 'collection' %}
+                    {% assign collection = collections[block.settings.collection] %}
+                    {% assign collectionLimit = block.settings.collection_limit %}
+                    {% for product in collection.products limit: collectionLimit %}
+                        {% liquid 
+                            assign blockTitle = product.title
+                            assign blockImage = product.images.first
+                            assign blockButtonUrl = product.url  
+                            if blockImage != blank 
+                                if blockImage.alt != blank 
+                                    assign blockImageAlt = 'alt="' | append: blockImage.alt | append: '"'
+                                else 
+                                    assign blockImageAlt = ''
+                                endif
+                                assign proportion = blockImage.aspect_ratio
+                                assign imageImgW = blockImage.width
+                                assign imageImgH = blockImage.height
+                                assign maxWidthAllowed = 500
+                                assign maxHeightAllowed = 1300
+                                if slidesToShow == 2
+                                        assign maxWidthAllowed = 850
+                                        assign maxHeightAllowed = 1300
+                                elsif slidesToShow == 3
+                                        assign maxWidthAllowed = 550
+                                        assign maxHeightAllowed = 850
+                                elsif slidesToShow == 4
+                                        assign maxWidthAllowed = 450
+                                        assign maxHeightAllowed = 650
+                                elsif slidesToShow == 5
+                                        assign maxWidthAllowed = 350
+                                        assign maxHeightAllowed = 500
+                                elsif slidesToShow == 6
+                                        assign maxWidthAllowed = 280
+                                        assign maxHeightAllowed = 450
+                                endif
+                                if proportion > 1
+                                    # landscape
+                                    assign mostW = maxWidthAllowed
+                                    assign mostH = mostW | times: proportion
+                                elsif proportion < 1
+                                    # portrait
+                                    assign mostH = maxHeightAllowed
+                                    assign mostW = mostH | times: proportion
+                                else
+                                    # sqaure
+                                    assign mostW = maxWidthAllowed
+                                    assign mostH = mostW
+                                endif
+                                assign iw = imageImgW | at_most: mostW | round
+                                assign ih = imageImgH | at_most: mostH | round
+                                if imageSize == 'portrait'
+                                    assign ih = iw | divided_by: 0.6666667 | round
+                                    if imageImgH < ih
+                                        assign ih = imageImgH
+                                        assign iw = ih | divided_by: 1.5 | round
+                                    endif
+                                    if imageImgW < iw
+                                        assign iw = imageImgW
+                                        assign ih = iw | divided_by: 0.666667 | round
+                                    endif
+                                elsif imageSize == 'square'
+                                    assign ih = iw
+                                    if iw > imageImgW
+                                        assign iw = imageImgW
+                                        assign ih = iw
+                                    endif
+                                    if ih > imageImgH
+                                        assign ih = imageImgH
+                                        assign iw = ih
+                                    endif
+                                elsif imageSize == 'original'
+                                    assign ih = iw | divided_by: proportion | round
+                                endif
+                                assign size = iw | append: 'x' | append: ih
+                                assign blockImageUrl = blockImage | img_url: size, crop: 'center'                           
+                            endif 
+                        %}
+                        <div class="qq-alternative-carousel-block" {{blockAttributes}}>
+                            <div class="qq-block-image qq-{{imageSize}}" data-imageSize="{{imageSize}}">
+                                {% if blockImage != blank %}
+                                    <img src="{{blockImageUrl}}" {{blockImageAlt}} loading="lazy">
+                                {% else %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 771 771" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice"><g style="isolation:isolate"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1" style="fill:#efefef;"><rect width="771" height="771" style="fill:#efefef;"/><g style="opacity:0.5"><path d="M280.73,441.53V406.12h-.48c-3,6.78-8.91,10.7-17.23,10.7-14.49,0-23-11.77-23-30.42S248.41,356,263.14,356c8.79,0,14.74,4,17.59,11.28h.47l.6-9.86H290v84.13Zm0-53.71V385c0-12.83-6.42-20.44-16-20.44s-15.1,7.72-15.1,21.87,5.47,21.86,15.1,21.86S280.73,400.66,280.73,387.82Z" style="fill:#373833"/><path d="M302.48,357.4h8.91l7.72,44.09h.48l10-44.09h7.49l10,44.09h.47l7.73-44.09h8.55l-10.81,58h-9.87l-9.74-43h-.47l-9.75,43h-9.86Z" style="fill:#373833"/><path d="M376.86,407.19h20V365.6h-20v-8.2h29.23v49.79h20v8.2h-49.2Zm15.21-69.52a8.08,8.08,0,1,1,8.08,8.09A7.87,7.87,0,0,1,392.07,337.67Z" style="fill:#373833"/><path d="M471.45,441.53V406.12H471c-3,6.78-8.92,10.7-17.23,10.7-14.5,0-23.06-11.77-23.06-30.42S439.13,356,453.86,356c8.8,0,14.74,4,17.59,11.28h.48l.59-9.86h8.2v84.13Zm0-53.71V385c0-12.83-6.41-20.44-16-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S471.45,400.66,471.45,387.82Z" style="fill:#373833"/><path d="M492.72,386.4c0-19.73,8.8-30.42,25.19-30.42s25.2,10.69,25.2,30.42-8.8,30.42-25.2,30.42S492.72,406.12,492.72,386.4Zm40.76,0c0-14.38-5.35-21.87-15.57-21.87S502.35,372,502.35,386.4s5.35,21.86,15.56,21.86S533.48,400.77,533.48,386.4Z" style="fill:#373833"/><path d="M553.09,386.4c0-18.66,8.55-30.42,23-30.42,8.32,0,14.26,3.92,17.23,10.69h.48V331h9.27v84.37h-8.2l-.6-9.86h-.47c-2.85,7.25-8.8,11.29-17.59,11.29C561.52,416.82,553.09,405.17,553.09,386.4Zm40.76,1.42V385c0-12.83-6.42-20.44-16.05-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S593.85,400.66,593.85,387.82Z" style="fill:#373833"/><path d="M615.36,386.28c0-19.61,8.79-30.3,25.31-30.3S666,366.67,666,386.28a18.15,18.15,0,0,1-.12,2.49H625c.59,13,6.06,19.49,16.52,19.49,6.53,0,11-2.61,13.43-7.6h10.34C661.94,411,654,416.82,641.38,416.82,624.39,416.82,615.36,406.24,615.36,386.28Zm40.75-5.35c-1.3-10.81-6.53-16.4-15.44-16.4s-14.15,5.59-15.45,16.4Z" style="fill:#373833"/><polygon points="105.12 429.87 179.13 385.56 105.12 341.26 115.51 324 201.41 375.33 201.41 395.8 115.51 447.13 105.12 429.87" style="fill:#29abe2"/><polygon points="119.25 395.8 119.25 375.33 205.22 323.97 215.55 341.26 141.53 385.56 215.55 429.87 205.16 447.13 119.25 395.8" style="fill:#0071bc;mix-blend-mode:multiply"/></g></g></g></g></svg>
+                                {% endif %}
+                            </div>
+                            {% if blockTitleDisplay == true %}
+                                <div class="qq-block-title">
+                                    <{{blockTitleType}}>{{blockTitle}}</{{blockTitleType}}>
+                                </div>
+                            {% endif %}        
+                            {% if productPriceDisplay == true %}
+                                {% assign productPrice = product.price %}
+                                {% assign productComparePrice = product.compare_at_price_max %}
+                                <span class="qq-product-price {% if product.compare_at_price_min > product.price_min %}has-compare-price{% endif %}">
+                                    {% comment %} {{productPrice | money }} {% endcomment %}
+                                    {% if product.price_varies and product.variants.size > 1 %}
+                                        {% if productPriceFrom == true %}
+                                            {{productPriceFromLabel}}
+                                        {% endif %}
+                                        {{- product.price_min | money -}}
+                                        {% if product.compare_at_price_min > product.price_min %}
+                                            <span class="qq-compare-price"><s> {{product.compare_at_price_min | money}}</s></span>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if productComparePrice > productPrice %}
+                                            <span class="qq-compare-price"><s>{{productComparePrice | money}}</s></span>
+                                        {% endif %}
+                                        {{productPrice | money }}
+                                    {% endif %}
+                                </span>
+                            {% endif %}
+                            {% if blockButtonDisplay == true and blockButtonLabel != blank %}
+                                <div class="qq-button-wrapper">
+                                    <a class="qq-btn btn btn_zoom" href="{{blockButtonUrl}}" {%if blockButtonTab == true %}target="blank"{%endif%}><span>{{blockButtonLabel}}</span></a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% elsif block.type == 'product' %}
+                    {% liquid 
+                        assign blockTitleSource = block.settings.title_source
+                        assign blockImageSource = block.settings.image_source
+                        assign product = block.settings.product
+                        assign blockButtonUrl = product.url
+                        if blockTitleSource == 'product'
+                            assign blockTitle = product.title
+                        elsif blockTitleSource == 'custom'
+                            assign blockTitle = block.settings.title
+                        endif
+                        if blockImageSource == 'product'
+                            assign blockImage = product.featured_image
+                        elsif blockImageSource == 'custom'
+                            assign blockImage = block.settings.custom_image
+                        endif 
+                        if blockImage.alt != blank 
+                            assign blockImageAlt = 'alt="' | append: blockImage.alt | append: '"'
+                        else 
+                            assign blockImageAlt = ''
+                        endif
+                        assign proportion = blockImage.aspect_ratio
+                        assign imageImgW = blockImage.width
+                        assign imageImgH = blockImage.height
+                        assign maxWidthAllowed = 500
+                        assign maxHeightAllowed = 1300
+                        if slidesToShow == 2
+                                assign maxWidthAllowed = 850
+                                assign maxHeightAllowed = 1300
+                        elsif slidesToShow == 3
+                                assign maxWidthAllowed = 550
+                                assign maxHeightAllowed = 850
+                        elsif slidesToShow == 4
+                                assign maxWidthAllowed = 450
+                                assign maxHeightAllowed = 650
+                        elsif slidesToShow == 5
+                                assign maxWidthAllowed = 350
+                                assign maxHeightAllowed = 500
+                        elsif slidesToShow == 6
+                                assign maxWidthAllowed = 280
+                                assign maxHeightAllowed = 450
+                        endif
+                        if proportion > 1
+                            # landscape
+                            assign mostW = maxWidthAllowed
+                            assign mostH = mostW | times: proportion
+                        elsif proportion < 1
+                            # portrait
+                            assign mostH = maxHeightAllowed
+                            assign mostW = mostH | times: proportion
+                        else
+                            # sqaure
+                            assign mostW = maxWidthAllowed
+                            assign mostH = mostW
+                        endif
+                        assign iw = imageImgW | at_most: mostW | round
+                        assign ih = imageImgH | at_most: mostH | round
+                        if imageSize == 'portrait'
+                            assign ih = iw | divided_by: 0.6666667 | round
+                            if imageImgH < ih
+                                assign ih = imageImgH
+                                assign iw = ih | divided_by: 1.5 | round
+                            endif
+                            if imageImgW < iw
+                                assign iw = imageImgW
+                                assign ih = iw | divided_by: 0.666667 | round
+                            endif
+                        elsif imageSize == 'square'
+                            assign ih = iw
+                            if iw > imageImgW
+                                assign iw = imageImgW
+                                assign ih = iw
+                            endif
+                            if ih > imageImgH
+                                assign ih = imageImgH
+                                assign iw = ih
+                            endif
+                        elsif imageSize == 'original'
+                            assign ih = iw | divided_by: proportion | round
+                        endif
+                        assign size = iw | append: 'x' | append: ih
+                        assign blockImageUrl = blockImage | img_url: size, crop: 'center'
+                    %}
+                    <div class="qq-alternative-carousel-block" {{blockAttributes}}>
+                        {% if product != blank %}
+                            <div class="qq-block-image qq-{{imageSize}}" data-imageSize="{{imageSize}}">
+                                {% if blockImage != blank %}
+                                    <img src="{{blockImageUrl}}" {{blockImageAlt}} loading="lazy">
+                                {% else %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 771 771" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice"><g style="isolation:isolate"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1" style="fill:#efefef;"><rect width="771" height="771" style="fill:#efefef;"/><g style="opacity:0.5"><path d="M280.73,441.53V406.12h-.48c-3,6.78-8.91,10.7-17.23,10.7-14.49,0-23-11.77-23-30.42S248.41,356,263.14,356c8.79,0,14.74,4,17.59,11.28h.47l.6-9.86H290v84.13Zm0-53.71V385c0-12.83-6.42-20.44-16-20.44s-15.1,7.72-15.1,21.87,5.47,21.86,15.1,21.86S280.73,400.66,280.73,387.82Z" style="fill:#373833"/><path d="M302.48,357.4h8.91l7.72,44.09h.48l10-44.09h7.49l10,44.09h.47l7.73-44.09h8.55l-10.81,58h-9.87l-9.74-43h-.47l-9.75,43h-9.86Z" style="fill:#373833"/><path d="M376.86,407.19h20V365.6h-20v-8.2h29.23v49.79h20v8.2h-49.2Zm15.21-69.52a8.08,8.08,0,1,1,8.08,8.09A7.87,7.87,0,0,1,392.07,337.67Z" style="fill:#373833"/><path d="M471.45,441.53V406.12H471c-3,6.78-8.92,10.7-17.23,10.7-14.5,0-23.06-11.77-23.06-30.42S439.13,356,453.86,356c8.8,0,14.74,4,17.59,11.28h.48l.59-9.86h8.2v84.13Zm0-53.71V385c0-12.83-6.41-20.44-16-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S471.45,400.66,471.45,387.82Z" style="fill:#373833"/><path d="M492.72,386.4c0-19.73,8.8-30.42,25.19-30.42s25.2,10.69,25.2,30.42-8.8,30.42-25.2,30.42S492.72,406.12,492.72,386.4Zm40.76,0c0-14.38-5.35-21.87-15.57-21.87S502.35,372,502.35,386.4s5.35,21.86,15.56,21.86S533.48,400.77,533.48,386.4Z" style="fill:#373833"/><path d="M553.09,386.4c0-18.66,8.55-30.42,23-30.42,8.32,0,14.26,3.92,17.23,10.69h.48V331h9.27v84.37h-8.2l-.6-9.86h-.47c-2.85,7.25-8.8,11.29-17.59,11.29C561.52,416.82,553.09,405.17,553.09,386.4Zm40.76,1.42V385c0-12.83-6.42-20.44-16.05-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S593.85,400.66,593.85,387.82Z" style="fill:#373833"/><path d="M615.36,386.28c0-19.61,8.79-30.3,25.31-30.3S666,366.67,666,386.28a18.15,18.15,0,0,1-.12,2.49H625c.59,13,6.06,19.49,16.52,19.49,6.53,0,11-2.61,13.43-7.6h10.34C661.94,411,654,416.82,641.38,416.82,624.39,416.82,615.36,406.24,615.36,386.28Zm40.75-5.35c-1.3-10.81-6.53-16.4-15.44-16.4s-14.15,5.59-15.45,16.4Z" style="fill:#373833"/><polygon points="105.12 429.87 179.13 385.56 105.12 341.26 115.51 324 201.41 375.33 201.41 395.8 115.51 447.13 105.12 429.87" style="fill:#29abe2"/><polygon points="119.25 395.8 119.25 375.33 205.22 323.97 215.55 341.26 141.53 385.56 215.55 429.87 205.16 447.13 119.25 395.8" style="fill:#0071bc;mix-blend-mode:multiply"/></g></g></g></g></svg>
+                                {% endif %}
+                            </div>
+                            {% if blockTitleDisplay == true %}
+                                <div class="qq-block-title">
+                                    <{{blockTitleType}}>{{blockTitle}}</{{blockTitleType}}>
+                                </div>
+                            {% endif %}
+                            {% if productPriceDisplay == true %}
+                                	{% assign productPrice = product.price %}
+							        {% assign productComparePrice = product.compare_at_price_max %}
+                                <span class="qq-product-price">
+                                    {% comment %} {{productPrice | money }} {% endcomment %}
+                                    {% if product.price_varies and product.variants.size > 1 %}
+                                        {% if productPriceFrom == true %}
+                                            {{productPriceFromLabel}}
+                                        {% endif %}
+                                        {{- product.price_min | money -}}
+                                        {% if product.compare_at_price_min > product.price_min %}
+                                            <span class="qq-compare-price"><s> {{product.compare_at_price_min | money}}</s></span>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if productComparePrice > productPrice %}
+                                            <span class="qq-compare-price"><s>{{productComparePrice | money}}</s></span>
+                                        {% endif %}
+                                        {{productPrice | money }}
+                                    {% endif %}
+                                </span>
+                            {% endif %}
+                            {% if blockButtonDisplay == true and blockButtonLabel != blank %}
+                                <div class="qq-button-wrapper">
+                                    <a class="qq-btn btn btn_zoom" href="{{blockButtonUrl}}" {%if blockButtonTab == true %}target="blank"{%endif%}><span>{{blockButtonLabel}}</span></a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <h4 style="text-align:center;">Please add a product</h4>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {{carouselArrows}}
+        {{sectionButton}}
+    </div>
+</div>
+<style data='../AlternativeCarouselProducts.css.liquid'>section.qq-alternative-carousel-products{margin-left:auto;margin-right:auto}section.qq-alternative-carousel-products .qq-section-wrap-fullwidth .qq-alternative-carousel-blocks{width:100%;overflow:hidden}section.qq-alternative-carousel-products .qq-section-wrap-fullwidth .qq-alternative-carousel-blocks .slick-list{height:auto}@media(min-width:799px){section.qq-alternative-carousel-products .qq-section-wrap-fullwidth .qq-alternative-carousel-blocks .slick-list{padding-left:0!important}}@media(min-width:799px){section.qq-alternative-carousel-products:not(.qq-section-wrap-fullwidth) .qq-alternative-carousel-blocks[data-showTitles=one][data-carouselMobileBlocks="2"] .qq-alternative-carousel-block:not(.slick-current) .qq-block-title,section.qq-alternative-carousel-products:not(.qq-section-wrap-fullwidth) .qq-alternative-carousel-blocks[data-showTitles=one][data-carouselMobileBlocks="2"] .qq-alternative-carousel-block:not(.slick-current) .qq-button-wrapper,section.qq-alternative-carousel-products:not(.qq-section-wrap-fullwidth) .qq-alternative-carousel-blocks[data-showTitles=one][data-carouselMobileBlocks="2"] .qq-alternative-carousel-block:not(.slick-current) .qq-product-price{opacity:0}}section.qq-alternative-carousel-products:not(.qq-section-wrap-fullwidth) .qq-alternative-carousel-blocks[data-showTitles=one][data-carouselMobileBlocks="1"] .qq-alternative-carousel-block:not(.slick-current) .qq-block-title,section.qq-alternative-carousel-products:not(.qq-section-wrap-fullwidth) .qq-alternative-carousel-blocks[data-showTitles=one][data-carouselMobileBlocks="1"] .qq-alternative-carousel-block:not(.slick-current) .qq-button-wrapper,section.qq-alternative-carousel-products:not(.qq-section-wrap-fullwidth) .qq-alternative-carousel-blocks[data-showTitles=one][data-carouselMobileBlocks="1"] .qq-alternative-carousel-block:not(.slick-current) .qq-product-price{opacity:0}section.qq-alternative-carousel-products>div{position:relative;width:100%;height:auto;margin-left:auto;margin-right:auto}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner{width:100%;display:grid}@media(min-width:799px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner{grid-template-columns:25% 75%}}@media(max-width:798px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner{grid-template-columns:100%}}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-header .qq-title *{margin-top:0!important;margin-bottom:0!important}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-header .qq-textblock *{margin-bottom:0!important}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-header .qq-section-button{display:none}@media screen and (min-width:992px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-header .qq-section-button{display:block}}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks{position:relative}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks:not(.slick-initialized){display:none!important}@media(min-width:799px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks{grid-row:1/4;grid-column:2/3}}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks:not([data-sectionwidth=fullwidth]){max-width:100%}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks:not([data-sectionwidth=fullwidth]):not([data-slidesToShow="2"]):not([data-slidesToShow="3"]) .qq-alternative-carousel-block{max-width:300px}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks:not([data-sectionwidth=fullwidth]):not([data-slidesToShow="2"]):not([data-slidesToShow="3"]) .qq-alternative-carousel-block .qq-block-image{max-height:250px}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks:not([data-sectionwidth=fullwidth]):not([data-slidesToShow="2"]):not([data-slidesToShow="3"]) .qq-alternative-carousel-block .qq-block-image img,section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks:not([data-sectionwidth=fullwidth]):not([data-slidesToShow="2"]):not([data-slidesToShow="3"]) .qq-alternative-carousel-block .qq-block-image svg{max-height:250px}@media(min-width:799px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks[data-carouselresize=false] .slick-track{margin-left:0}}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks .qq-alternative-carousel-block{height:auto}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks .qq-alternative-carousel-block .qq-block-image{height:auto;text-align:center;width:100%;margin-left:auto;margin-right:auto}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks .qq-alternative-carousel-block .qq-block-image img,section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks .qq-alternative-carousel-block .qq-block-image svg{height:100%!important;width:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks .qq-alternative-carousel-block .qq-block-title{transition:all .3s ease}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks .qq-alternative-carousel-block .qq-block-title *{margin-top:0;margin-bottom:0}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-alternative-carousel-blocks .qq-alternative-carousel-block .qq-product-price{display:block;width:100%}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows{height:40px;width:100%;align-items:center;position:relative;display:none}@media screen and (min-width:992px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows{display:flex}}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows.qq-hidden{display:none!important}@media(min-width:799px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows.qq-left{padding-left:10px;grid-row:4/5;grid-column:2/3;justify-content:flex-start}}@media(min-width:799px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows.qq-right{padding-right:10px;grid-row:4/5;grid-column:2/3;justify-content:flex-end}}@media(min-width:799px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows{margin:10px 0}}@media(max-width:798px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows{justify-content:center;margin:0 0 10px}}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows .btn{height:40px;width:40px;padding:10px;background:0 0;bottom:inherit;transform:none;border-radius:0;position:relative;cursor:pointer;transition:all .25s ease;margin:0 8px}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows .btn:before{border-radius:100%}@media(max-width:798px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows .btn{margin:0 10px}}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows .btn:hover{opacity:.7}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows .btn.qq-custom-left{margin-right:5px}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner .qq-carousel-arrows .btn.qq-custom-right{margin-left:5px}section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner>.qq-section-button{display:block}@media screen and (min-width:992px){section.qq-alternative-carousel-products>div .qq-alternative-carousel-inner>.qq-section-button{display:none}}section.qq-alternative-carousel-products>div .qq-button-wrapper{width:100%;display:flex}section.qq-alternative-carousel-products>div .qq-button-wrapper .qq-btn{text-align:center;width:auto;display:inline;text-decoration:none!important}html[dir=rtl] .qq-alternative-carousel .qq-carousel-arrows{flex-direction:row-reverse!important}@media(min-width:799px){html[dir=rtl] .qq-alternative-carousel .qq-carousel-arrows{justify-content:flex-end!important}}</style>
+{% assign sectionID = 'shopify-section-' | append: section.id %}
+<style data='../AlternativeCarouselProducts-inline-css.min.css.liquid'>{% if sectionTitleCustomFont %} {{sectionTitleFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% if sectionTextblockCustomFont %} {{sectionTextblockFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% if sectionButtonLabel != blank %} {% if sectionButtonCustomFont %} {{sectionButtonFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% endif %} {% if blockTitleDisplay == true %} {% if blockTitleCustomFont %} {{blockTitleFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% endif %} {% if productPriceDisplay == true %} {% if productPriceCustomFont %} {{productPriceFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% endif %} {% if blockButtonDisplay == true %} {% if blockButtonCustomFont %} {{blockButtonFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% endif %} #{{sectionID}} * { text-transform:none; } {% if sectionWidth == 'fullwidth' %} #{{sectionID}} { width: 100vw !important; position: relative !important; height: auto !important; } #{{sectionID}} > div { max-width:{{contentMaxWidth}}px; margin:0 auto; } html:not([dir="rtl"]) #{{sectionID}} { margin-left: -50vw !important; left: 50% !important; } html[dir="rtl"] #{{sectionID}} { margin-right: -50vw !important; right: 50% !important; } body { overflow-x:hidden; } #{{sectionID}} > div { max-width:{{contentMaxWidth}}px; } {% else %} #{{sectionID}} { max-width:{{contentMaxWidth}}px; } {% endif %} #{{sectionID}} { background-color:{{sectionBackgroundColor}}; } #{{sectionID}} .qq-alternative-carousel-header .qq-title * { {% if sectionTitleCustomFont %} {% if sectionTitleFontName != blank %} font-family:{{sectionTitleFontName}}; {% else %} font-family:{{sectionTitleFont.family}}, {{sectionTitleFont.fallback_families}}; {% endif %} {%endif%} margin-top:0; font-weight:{{sectionTitleFontWeight}} !important; {% if sectionTitleColor contains '#' %} color:{{sectionTitleColor}};{%endif%} } #{{sectionID}} .qq-alternative-carousel-header .qq-textblock * { {% if sectionTextblockCustomFont %} {% if sectionTextblockFontName != blank %} font-family:{{sectionTextblockFontName}}; {% else %} font-family:{{sectionTextblockFont.family}}, {{sectionTextblockFont.fallback_families}}; {% endif %} {%endif%} font-weight:{{sectionTextblockFontWeight}} !important; {% if sectionTextblockColor contains '#' %} color:{{sectionTextblockColor}};{%endif%} } {% if sectionButtonLabel != blank %} #{{sectionID}} .qq-section-button .qq-button-wrapper .qq-btn { {% if sectionButtonCustomFont %} {% if sectionButtonFontName != blank %} font-family:{{sectionButtonFontName}}; {% else %} font-family:{{sectionButtonFont.family}}, {{sectionButtonFont.fallback_families}}; {% endif %} {%endif%} font-weight:{{sectionButtonFontWeight}} !important; {% if sectionButtonColor contains '#'%}color:{{sectionButtonColor}};{%endif%} {% if sectionButtonBackgroundColor contains '#' %}background-color:{{sectionButtonBackgroundColor}};{%endif%} {% if sectionButtonBorder != 0 %} border: {{sectionButtonBorder}}px solid {{sectionButtonBorderColor}}; {% endif %} border-radius:{{sectionButtonRadius}}px; padding:{{sectionButtonPaddingVertical}}px {{sectionButtonPaddingHorizontal}}px; line-height: initial!important; max-width:{{sectionButtonMaxWidth}}px; } #{{sectionID}} .qq-section-button .qq-button-wrapper .qq-btn:hover { {% if sectionButtonColorHover contains '#'%}color:{{sectionButtonColorHover}}!important;{%endif%} {% if sectionButtonBackgroundColorHover contains '#' %}background-color:{{sectionButtonBackgroundColorHover}}!important;{%endif%} {% if sectionButtonBorder != 0 %}border-color:{{sectionButtonBorderColorHover}}!important;{% endif %} } {% endif %} #{{sectionID}} .qq-block-image { max-width:{{imageWidth}}%; border-radius:{{imageBorderRadius}}px; } {% if imageBorderRadius > 0 %} #{{sectionID}} .qq-block-image img { border-radius:{{imageBorderRadius}}px; } {% endif %} {% if blockTitleDisplay == true %} #{{sectionID}} .qq-block-title * { {% if blockTitleCustomFont %} {% if blockTitleFontName != blank %} font-family:{{blockTitleFontName}}; {% else %} font-family:{{blockTitleFont.family}}, {{blockTitleFont.fallback_families}}; {% endif %} {%endif%} font-weight:{{blockTitleFontWeight}} !important; {% if blockTitleColor contains '#'%}color:{{blockTitleColor}};{%endif%} } {% endif %} {% if productPriceDisplay == true %} #{{sectionID}} .qq-product-price { {% if productPriceCustomFont %} {% if productPriceFontName != blank %} font-family: {{productPriceFontName}}; {% else %} font-family:{{productPriceFont.family}}, {{productPriceFont.fallback_families}}; {% endif %} {%endif%} font-weight:{{productPriceFontWeight}} !important; {% if productPriceColor contains '#' %}color:{{productPriceColor}};{%endif%} } #{{sectionID}} .qq-product-price.has-compare-price { {% if productComparePriceColor contains '#' %}color:{{productComparePriceColor}};{%endif%} } #{{sectionID}} .qq-product-price.has-compare-price .qq-compare-price { {% if productPriceColor contains '#' %}color:{{productPriceColor}};{%endif%} font-weight: 400; } {% endif %} {% if blockButtonDisplay == true %} #{{sectionID}} .qq-alternative-carousel-block .qq-button-wrapper .qq-btn { {% if blockButtonCustomFont %} {% if blockButtonFontName != blank %} font-family:{{blockButtonFontName}}; {% else %} font-family:{{blockButtonFont.family}}, {{blockButtonFont.fallback_families}}; {% endif %} {%endif%} font-weight:{{blockButtonFontWeight}} !important; {% if blockButtonColor contains '#'%}color:{{blockButtonColor}};{%endif%} {% if blockButtonBackgroundColor contains '#' %}background-color:{{blockButtonBackgroundColor}};{%endif%} {% if blockButtonBorder != 0 %} border: {{blockButtonBorder}}px solid {{blockButtonBorderColor}}; {% endif %} border-radius:{{blockButtonRadius}}px; padding:{{blockButtonPaddingVertical}}px {{blockButtonPaddingHorizontal}}px; line-height: initial !important; } #{{sectionID}} .qq-alternative-carousel-block .qq-button-wrapper .qq-btn:hover { {% if blockButtonColorHover contains '#'%}color:{{blockButtonColorHover}}!important;{%endif%} {% if blockButtonBackgroundColorHover contains '#' %}background-color:{{blockButtonBackgroundColorHover}}!important;{%endif%} {% if blockButtonBorder != 0 %}border-color:{{blockButtonBorderColorHover}}!important;{% endif %} } {% endif %} {% if carouselArrowsLineColor contains '#'%} #{{sectionID}} .qq-carousel-arrow svg polyline { stroke:{{carouselArrowsLineColor}} !important; } {%endif%} {% if carouselArrowsBgColor contains '#'%} #{{sectionID}} .qq-carousel-arrow svg circle { fill:{{carouselArrowsBgColor}} !important; } {%endif%} @media screen and (min-width: 769px) { #{{sectionID}} { margin-top:{{sectionMarginTop}}px; margin-bottom:{{sectionMarginBottom}}px; padding:{{sectionPaddingTop}}px {{sectionPaddingHorizontal}}px {{sectionPaddingBottom}}px; } #{{sectionID}} .qq-alternative-carousel-header { padding:{{sectionHeaderPaddingTop}}px {{sectionHeaderPaddingRight}}px {{sectionHeaderPaddingBottom}}px {{sectionHeaderPaddingLeft}}px; } #{{sectionID}} .qq-alternative-carousel-header .qq-title { margin-top:{{sectionTitleMarginTop}}px; margin-bottom:{{sectionTitleMarginBottom}}px; } #{{sectionID}} .qq-alternative-carousel-header .qq-title * { {% if sectionTitleFontSize != 0 %}font-size:{{sectionTitleFontSize}}px;{% endif %} {% if sectionTitleLineHeight != 0 %}line-height:{{sectionTitleLineHeight}}px;{% endif %} {% if sectionTitleLetterSpacing != 0 %}letter-spacing:{{sectionTitleLetterSpacing}}px;{% endif %} text-align:{{sectionHeaderAlignment}}; } #{{sectionID}} .qq-alternative-carousel-header .qq-textblock { margin-top:{{sectionTextblockMarginTop}}px; margin-bottom:{{sectionTextblockMarginBottom}}px; } #{{sectionID}} .qq-alternative-carousel-header .qq-textblock * { {% if sectionTextblockFontSize != 0 %}font-size:{{sectionTextblockFontSize}}px;{% endif %} {% if sectionTextblockLetterSpacing != 0 %}letter-spacing:{{sectionTextblockLetterSpacing}}px;{% endif %} {% if sectionTextblockLineHeight != 0 %}line-height:{{sectionTextblockLineHeight}}px;{% endif %} text-align:{{sectionHeaderAlignment}}; } {% if sectionButtonLabel != blank %} #{{sectionID}} .qq-section-button .qq-button-wrapper { margin-top:{{sectionButtonMarginTop}}px; justify-content:{{sectionButtonAlignment}}; } #{{sectionID}} .qq-section-button .qq-btn { {% if sectionButtonFontSize != 0 %}font-size:{{sectionButtonFontSize}}px;{% endif %} {% if sectionButtonLetterSpacing != 0 %}letter-spacing:{{sectionButtonLetterSpacing}}px;{% endif %} } {% endif %} #{{sectionID}} .qq-alternative-carousel-blocks { margin-top:{{blocksMarginTop}}px; margin-bottom:{{blocksMarginBottom}}px; } #{{sectionID}} .qq-alternative-carousel-block{ padding:0 {{carouselSlidePadding}}px; } {% if blockTitleDisplay == true %} #{{sectionID}} .qq-alternative-carousel-block .qq-block-title { margin-top:{{blockTitleMarginTop}}px; margin-bottom:{{blockTitleMarginBottom}}px; {% if blockTitleMinHeight != 0 %}min-height:{{blockTitleMinHeight}}px;{% endif %} } #{{sectionID}} .qq-alternative-carousel-block .qq-block-title * { {% if blockTitleFontSize != 0 %}font-size:{{blockTitleFontSize}}px;{% endif %} {% if blockTitleLineHeight != 0 %}line-height:{{blockTitleLineHeight}}px;{% endif %} {% if blockTitleLetterSpacing != 0 %}letter-spacing:{{blockTitleLetterSpacing}}px;{% endif %} text-align:{{blocksTextAlignment}}; } {% endif %} {% if productPriceDisplay == true %} #{{sectionID}} .qq-product-price { {% if productPriceFontSize != 0 %}font-size:{{productPriceFontSize}}px;{% endif %} {% if productPriceLineHeight != 0 %}line-height:{{productPriceLineHeight}}px;{% endif %} {% if productPriceLetterSpacing != 0 %}letter-spacing:{{productPriceLetterSpacing}}px !important;{% endif %} text-align:{{blocksTextAlignment}}; margin-bottom:{{productPriceMarginBottom}}px; } {% if productComparePriceFontSize != 0 %} #{{sectionID}} .qq-product-price span.qq-compare-price { font-size:{{productComparePriceFontSize}}px; } {% endif %} {% endif %} {% if blockButtonDisplay == true %} #{{sectionID}} .qq-alternative-carousel-block .qq-button-wrapper { padding-top:{{blockButtonMarginTop}}px; padding-bottom:{{blockButtonMarginBottom}}px; justify-content:{{buttonAlignment}}; } #{{sectionID}} .qq-alternative-carousel-block .qq-btn { {% if blockButtonFontSize != 0 %}font-size:{{blockButtonFontSize}}px;{% endif %} {% if blockButtonLetterSpacing != 0 %}letter-spacing:{{blockButtonLetterSpacing}}px;{% endif %} } {% endif %} #{{sectionID}} .qq-carousel-arrows.qq-below { justify-content:{{arrowWrapperAlignment}}; } } @media screen and (max-width: 768px) { #{{sectionID}} { margin-top:{{sectionMarginTopMobile}}px; margin-bottom:{{sectionMarginBottomMobile}}px; padding:{{sectionPaddingTopMobile}}px {{sectionPaddingHorizontalMobile}}px {{sectionPaddingBottomMobile}}px; } #{{sectionID}} .qq-alternative-carousel-header { padding:{{sectionHeaderPaddingTopMobile}}px {{sectionHeaderPaddingRightMobile}}px {{sectionHeaderPaddingBottomMobile}}px {{sectionHeaderPaddingLeftMobile}}px; } #{{sectionID}} .qq-alternative-carousel-header .qq-title { margin-top:{{sectionTitleMarginTopMobile}}px; margin-bottom:{{sectionTitleMarginBottomMobile}}px; } #{{sectionID}} .qq-alternative-carousel-header .qq-title * { {% if sectionTitleFontSizeMobile != 0 %}font-size:{{sectionTitleFontSizeMobile}}px;{% endif %} {% if sectionTitleLineHeightMobile != 0 %}line-height:{{sectionTitleLineHeightMobile}}px;{% endif %} {% if sectionTitleLetterSpacingMobile != 0 %}letter-spacing:{{sectionTitleLetterSpacingMobile}}px;{% endif %} text-align:{{sectionHeaderAlignmentMobile}}; } #{{sectionID}} .qq-alternative-carousel-header .qq-textblock { margin-top:{{sectionTextblockMarginTopMobile}}px; margin-bottom:{{sectionTextblockMarginBottomMobile}}px; } #{{sectionID}} .qq-alternative-carousel-header .qq-textblock * { {% if sectionTextblockFontSizeMobile != 0 %}font-size:{{sectionTextblockFontSizeMobile}}px;{% endif %} {% if sectionTextblockLetterSpacingMobile != 0 %}letter-spacing:{{sectionTextblockLetterSpacingMobile}}px;{% endif %} {% if sectionTextblockLineHeightMobile != 0 %}line-height:{{sectionTextblockLineHeightMobile}}px;{% endif %} text-align:{{sectionHeaderAlignmentMobile}}; } {% if sectionButtonLabel != blank %} #{{sectionID}} .qq-section-button .qq-button-wrapper { margin-top:{{sectionButtonMarginTopMobile}}px; justify-content:{{sectionButtonAlignmentMobile}}; } #{{sectionID}} .qq-section-button .qq-btn { {% if sectionButtonFontSizeMobile != 0 %}font-size:{{sectionButtonFontSizeMobile}}px;{% endif %} {% if sectionButtonLetterSpacingMobile != 0 %}letter-spacing:{{sectionButtonLetterSpacingMobile}}px;{% endif %} } {% endif %} #{{sectionID}} .qq-alternative-carousel-blocks { margin-top:{{blocksMarginTopMobile}}px; margin-bottom:{{blocksMarginBottomMobile}}px; } #{{sectionID}} .qq-alternative-carousel-block{ padding:0 {{carouselSlidePaddingMobile}}px; } {% if blockTitleDisplay == true %} #{{sectionID}} .qq-alternative-carousel-block .qq-block-title { margin-top:{{blockTitleMarginTopMobile}}px; margin-bottom:{{blockTitleMarginBottomMobile}}px; {% if blockTitleMinHeightMobile != 0 %}min-height:{{blockTitleMinHeightMobile}}px;{% endif %} } #{{sectionID}} .qq-alternative-carousel-block .qq-block-title * { {% if blockTitleFontSizeMobile != 0 %}font-size:{{blockTitleFontSizeMobile}}px;{% endif %} {% if blockTitleLineHeightMobile != 0 %}line-height:{{blockTitleLineHeightMobile}}px;{% endif %} {% if blockTitleLetterSpacingMobile != 0 %}letter-spacing:{{blockTitleLetterSpacingMobile}}px;{% endif %} text-align:{{blocksTextAlignmentMobile}}; } {% endif %} {% if productPriceDisplay == true %} #{{sectionID}} .qq-product-price { {% if productPriceFontSizeMobile != 0 %}font-size:{{productPriceFontSizeMobile}}px;{% endif %} {% if productPriceLineHeightMobile != 0 %}line-height:{{productPriceLineHeightMobile}}px;{% endif %} {% if productPriceLetterSpacingMobile != 0 %}letter-spacing:{{productPriceLetterSpacingMobile}}px !important;{% endif %} text-align:{{blocksTextAlignmentMobile}}; margin-bottom:{{productPriceMarginBottomMobile}}px; } {% if productComparePriceFontSizeMobile != 0 %} #{{sectionID}} .qq-product-price span.qq-compare-price { font-size:{{productComparePriceFontSizeMobile}}px; } {% endif %} {% endif %} {% if blockButtonDisplay == true %} #{{sectionID}} .qq-alternative-carousel-block .qq-button-wrapper { padding-top:{{blockButtonMarginTopMobile}}px; padding-bottom:{{blockButtonMarginBottomMobile}}px; justify-content:{{buttonAlignmentMobile}}; } #{{sectionID}} .qq-alternative-carousel-block .qq-btn { {% if blockButtonFontSizeMobile != 0 %}font-size:{{blockButtonFontSizeMobile}}px;{% endif %} {% if blockButtonLetterSpacingMobile != 0 %}letter-spacing:{{blockButtonLetterSpacingMobile}}px;{% endif %} } {% endif %} } #{{sectionID}} .qq-carousel-item svg, #{{sectionID}} .qq-carousel-item img { max-width:{{iconImageSize}}%; text-align:center; margin: 0 auto; }</style>
+<style>
+  #{{sectionID}} > div{
+    max-width: calc(var(--page-width) + var(--page-padding) * 2);
+  }
+  #{{sectionID}} .qq-btn span {position: relative;}
+  #{{sectionID}} .qq-section-button .btn_zoom:before {
+    background-color:{{sectionButtonBackgroundColor}};
+    color:{{sectionButtonColor}};
+  }
+  #{{sectionID}} .qq-section-button .btn_zoom:hover:before {
+    background-color:{{sectionButtonBackgroundColorHover}};
+    color:{{sectionButtonColorHover}};
+  }
+  #{{sectionID}} .qq-alternative-carousel-block .btn_zoom:before {
+    background-color:{{blockButtonBackgroundColor}};
+    color:{{blockButtonBackgroundColor}};
+  }
+  #{{sectionID}} .qq-alternative-carousel-block .btn_zoom:hover:before {
+    background-color:{{blockButtonBackgroundColorHover}};
+    color:{{blockButtonBackgroundColorHover}};
+  }
+  #{{sectionID}} .qq-carousel-arrow.btn_zoom svg path {
+    {% if carouselArrowsLineColor != blank %}fill:{{carouselArrowsLineColor}}!important;{% endif %}
+  }
+  #{{sectionID}} .qq-carousel-arrow.btn_zoom:before {
+    {% if carouselArrowsBgColor != blank %}background-color:{{carouselArrowsBgColor}}!important;{% endif %}
+  }
+  
+  @media screen and (min-width:993px) {
+    #{{sectionID}} > div {
+      max-width:unset!important;
+      padding-right:50px!important;
+      padding-left:50px!important;
+    }
+  }
+  @media screen and (max-width:992px) {
+    #{{sectionID}} .qq-carousel-arrow {
+        background-color: #1FACB2 !important;
+        border-radius: 100% !important;
+    }
+    #{{sectionID}} ul.slick-dots {
+        display:flex !important;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-items:center;
+        width: auto;
+        padding-left: 0;
+    }
+    #{{sectionID}} ul.slick-dots li {
+        height: 13px;
+        width: 13px;
+        background: {{carouselDotsColor}};
+        margin: 10px;
+        border-radius: 100%;
+    }
+    #{{sectionID}} ul.slick-dots li::marker {
+        font-size:0;
+    }
+    #{{sectionID}} ul.slick-dots li button {
+        display:none;
+    }
+    #{{sectionID}} ul.slick-dots li:not(.slick-active) {
+        opacity:0.3;
+    }
+    #{{sectionID}} .qq-product-price {
+        min-height:44px;
+    }
+  }
+</style>
+<!-- js:../AlternativeCarouselProducts.min.js -->{% javascript %}"use strict";function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}!function(){function t(){var e=document.querySelectorAll(".qq-alternative-carousel-products .QQ-JS-init-msg");e&&e.forEach(function(e){e.remove()})}var i;function o(){(i=document.getElementsByClassName("qq-alternative-carousel-products")).length&&function e(){{var t,o,n;null==("undefined"==typeof $?"undefined":_typeof($))||null==window.$?((t=document.createElement("script")).id="qq-jquery",document.head.appendChild(t),t.type="text/javascript",t.src="https://code.jquery.com/jquery-3.6.0.min.js",t.onload=function(){e()}):document.getElementById("qq-slick")&&document.getElementById("qq-slick-css")?o=setInterval(function(){$.fn.slick&&(clearInterval(o),s())},10):(document.getElementById("qq-slick")||((n=document.createElement("script")).id="qq-slick",document.head.appendChild(n),n.type="text/javascript",n.src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js",n.onload=function(){e()}),document.getElementById("qq-slick-css")||((n=document.createElement("link")).id="qq-slick-css",document.head.appendChild(n),n.type="text/css",n.rel="stylesheet",n.href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"))}}()}function s(){for(var e=0;e<i.length;e++)!function(e){{var o,t,n,i,s,c,l,r,a,d,u,p,f,m,q;$("#"+e).length&&(o=function(){var e;798<=$(window).width()?(e=$(window).width()-t.offset().left+t.find(".slick-slide").width()/2,t.css("width",e,"px")):t.css("width",t,"px")},t=$("#"+e).find(".qq-alternative-carousel-blocks"),n=t.attr("data-sectionWidth"),i=Number(t.attr("data-slidesToShow")),Number(t.attr("data-blocksAmount")),s=/true/i.test(t.attr("data-carouselAutoplay")),c=1e3*Number(t.attr("data-carouselSpeed")),l=Number(t.attr("data-carouselMobileBlocks")),r=t.attr("data-carouselResize"),a=1==l,void 0!==(f=$("html").attr("dir"))&&!1!==f&&(d="rtl"==f),u=$("#"+e+"  .qq-carousel-arrows .qq-carousel-prev"),p=$("#"+e+"  .qq-carousel-arrows .qq-carousel-next"),(f=u.parent()).hasClass("qq-hidden")&&f.removeClass("qq-hidden"),$("#"+e+" .qq-alternative-carousel-blocks").not(".slick-initialized").on("init reInit setPosition",function(e,t){m=setTimeout(function(){clearInterval(m),o()},400)}).slick({infinite:!0,rtl:d,slidesToShow:i,slidesToScroll:1,arrows:!0,centerMode:!1,swipeToSlide:!1,prevArrow:u,nextArrow:p,autoplay:s,autoplaySpeed:s?c:void 0,focusOnSelect:!0,responsive:[{breakpoint:992,settings:{slidesToShow:l,slidesToScroll:l,centerMode:a,dots:!0,arrows:!1}}]}),"fullwidth"==n&&"true"==r&&(o(),$(window).resize(function(){clearTimeout(q),q=setTimeout(o,500)})))}}("qq"+i[e].id.replace("template--","").replace("shopify-section-","").replace("__",""))}window.addEventListener("shopify:section:load",function(e){t()}),t(),"loading"!==document.readyState?o():document.addEventListener("DOMContentLoaded",function(){o()}),window.addEventListener("shopify:section:load",function(e){o()}),window.addEventListener("shopify:block:select",function(e){if(i.length)for(var t=0;t<i.length;t++){var o=i[t].id,n="qq"+o.replace("template--","").replace("shopify-section-","").replace("__","");"shopify-section-"+e.detail.sectionId===o&&$("#"+n+" .qq-alternative-carousel-block").each(function(){if($(this).attr("data-shopify-editor-block").includes(e.detail.blockId))return $(this).trigger("click"),!1})}})}();{% endjavascript %}<!-- endjs -->
+{% schema %}
+  {
+    "name": "QQ-Alt Carousel Products",
+    "tag": "section",
+    "class": "qq-alternative-carousel-products",
+    "settings": [
+    {
+        "type": "text",
+        "id": "section_class",
+        "label": "Section Class",
+        "info": "Add section class (without .). Use spaces to add multiple classes"
+    },
+    {
+        "type": "richtext",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "<h2>Section Title</h2>"
+    },
+    {
+        "type": "richtext",
+        "id": "section_textblock",
+        "label": "Section Text",
+        "default": "<p>Section Textblock content</p>"
+    },
+    {
+        "type": "text",
+        "id": "section_button_label",
+        "label": "Section Button Label",
+        "default": "Learn more"
+    },
+    {
+        "type": "url",
+        "id": "section_button_url",
+        "label": "Section Button Url"
+    },
+    {
+        "type": "checkbox",
+        "id": "section_button_tab",
+        "label": "Open in a New Tab",
+        "default": false
+    },
+    {
+        "type": "header",
+        "content": "Carousel Settings"
+    },
+    {
+        "type": "range",
+        "id": "carousel_slides_to_show",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "label": "Slides to Show",
+        "default": 4
+    },
+    {
+        "type": "select",
+        "id": "carousel_slides_to_show_mobile",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            }
+        ],
+        "default": "1",
+        "label": "Slides to Show on Mobile"
+    },
+    {
+        "type": "checkbox",
+        "id": "carousel_autoplay",
+        "label": "Autoplay Carousel Slides",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "carousel_speed",
+        "min": 1,
+        "max": 15,
+        "step": 1,
+        "label": "Carousel Speed",
+        "info": "Speed in seconds",
+        "default": 4
+    },
+    {
+        "type": "range",
+        "id": "carousel_slide_padding",
+        "min": 0,
+        "max": 60,
+        "step": 2,
+        "unit": "px",
+        "label": "Space between slides",
+        "default": 10
+    },
+    {
+        "type": "range",
+        "id": "carousel_slide_padding_mobile",
+        "min": 0,
+        "max": 60,
+        "step": 2,
+        "unit": "px",
+        "label": "Space between slides - Mobile",
+        "default": 10
+    },
+    {
+        "type": "color",
+        "id": "carousel_arrows_color_line",
+        "label": "Carousel Arrows Line Color"
+    },
+    {
+        "type": "color",
+        "id": "carousel_arrows_color_bg",
+        "label": "Carousel Arrows Background Color"
+    },
+    {
+        "type": "select",
+        "id": "arrows_alignment",
+        "options": [
+            {
+                "value": "below",
+                "label": "Below Title"
+            },
+            {
+                "value": "left",
+                "label": "Left"
+            },
+            {
+                "value": "right",
+                "label": "Right"
+            }
+        ],
+        "default": "left",
+        "label": "Arrows Alignment"
+    },
+    {
+        "type": "color",
+        "id": "dots_color",
+        "label": "Base color for dots",
+        "info": "On mobile only"
+    },
+    {
+        "type": "image_picker",
+        "id": "arrow_left",
+        "label": "Custom Left Arrow (Optional)",
+        "info": "Recommended size 32px X 32px"
+    },
+    {
+        "type": "image_picker",
+        "id": "arrow_right",
+        "label": "Custom Right Arrow (Optional)",
+        "info": "Recommended size 32px X 32px"
+    },
+    {
+        "type": "header",
+        "content": "Section Styling"
+    },
+    {
+        "type": "color",
+        "id": "section_background_color",
+        "label": "Section Background Color"
+    },
+    {
+        "type": "select",
+        "id": "section_width",
+        "options": [
+            {
+                "value": "regular",
+                "label": "Regular"
+            },
+            {
+                "value": "fullwidth",
+                "label": "Fullwidth"
+            }
+        ],
+        "default": "regular",
+        "label": "Section Width"
+    },
+    {
+			"type": "range",
+			"id": "content_max_width",
+			"min": 500,
+			"max": 1500,
+			"step": 20,
+			"unit": "px",
+			"label": "Content Max Width",
+			"default": 1280
+		},
+    {
+        "type": "range",
+        "id": "section_margin_top",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section Top Margin",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_margin_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section Bottom Margin",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Top Padding",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Bottom Padding",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_padding_horizontal",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Horizontal Padding",
+        "default": 20
+    },
+    {
+        "type": "header",
+        "content": "Section Styling - Mobile"
+    },
+    {
+        "type": "range",
+        "id": "section_margin_top_mobile",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section Top Margin - Mobile",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_margin_bottom_mobile",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section Bottom Margin - Mobile",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Top Padding - Mobile",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Bottom Padding - Mobile",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_padding_horizontal_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Horizontal Padding - Mobile",
+        "default": 10
+    },
+    {
+        "type": "header",
+        "content": "Section Header Styling"
+    },
+    {
+        "type": "select",
+        "id": "section_header_text_alignment",
+        "options": [
+            {
+                "value": "left",
+                "label": "Left"
+            },
+            {
+                "value": "center",
+                "label": "Center"
+            },
+            {
+                "value": "right",
+                "label": "Right"
+            }
+        ],
+        "default": "left",
+        "label": "Section Header Text Alignment"
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Top Padding",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Bottom Padding",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_left",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Left Padding",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_right",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Right Padding",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Header Styling - Mobile"
+    },
+    {
+        "type": "select",
+        "id": "section_header_text_alignment_mobile",
+        "options": [
+            {
+                "value": "left",
+                "label": "Left"
+            },
+            {
+                "value": "center",
+                "label": "Center"
+            },
+            {
+                "value": "right",
+                "label": "Right"
+            }
+        ],
+        "default": "center",
+        "label": "Section Header Text Alignment - Mobile"
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Top Padding - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Bottom Padding - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_left_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Left Padding - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_header_padding_right_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Header Right Padding - Mobile",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Title Styling"
+    },
+    {
+        "type": "color",
+        "id": "section_title_color",
+        "label": "Section Title Color"
+    },
+    {
+        "type": "checkbox",
+        "id": "section_title_custom_font",
+        "label": "Use Custom Font",
+        "default": false
+    },
+    {
+        "type": "font_picker",
+        "id": "section_title_font",
+        "label": "Section Title Font",
+        "default": "mono"
+    },
+    {
+        "type": "text",
+        "id": "section_title_font_name",
+        "label": "Custom Font Family Name",
+        "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+    },
+    {
+        "type": "select",
+        "id": "section_title_font_weight",
+        "options": [
+        {
+            "value": "default",
+            "label": "Default"
+        },
+        {
+            "value": "100",
+            "label": "100"
+        },
+        {
+            "value": "200",
+            "label": "200"
+        },
+        {
+            "value": "300",
+            "label": "300"
+        },
+        {
+            "value": "400",
+            "label": "400 (Regular)"
+        },
+        {
+            "value": "500",
+            "label": "500"
+        },
+        {
+            "value": "600",
+            "label": "600"
+        },
+        {
+            "value": "700",
+            "label": "700 (Bold)"
+        },
+        {
+            "value": "800",
+            "label": "800"
+        },
+        {
+            "value": "900",
+            "label": "900"
+        }
+        ],
+        "default": "default",
+        "label": "Font Weight"
+    },
+    {
+        "type": "paragraph",
+        "content": "Set value to 0 to use your theme's default values:"
+    },
+    {
+        "type": "select",
+        "id": "section_title_alignment",
+        "options": [
+            {
+                "value": "left",
+                "label": "Left"
+            },
+            {
+                "value": "center",
+                "label": "Center"
+            },
+            {
+                "value": "right",
+                "label": "Right"
+            }
+        ],
+        "default": "left",
+        "label": "Section Title Alignment"
+    },
+    {
+        "type": "range",
+        "id": "section_title_margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Margin Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_title_margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Margin Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_title_font_size",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Font Size",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_title_line_height",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Line Height",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_title_letter_spacing",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Letter Spacing",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Title Styling - Mobile"
+    },
+    {
+        "type": "select",
+        "id": "section_title_alignment_mobile",
+        "options": [
+            {
+                "value": "left",
+                "label": "Left"
+            },
+            {
+                "value": "center",
+                "label": "Center"
+            },
+            {
+                "value": "right",
+                "label": "Right"
+            }
+        ],
+        "default": "center",
+        "label": "Section Title Alignment - Mobile"
+    },
+    {
+        "type": "range",
+        "id": "section_title_margin_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Margin Top - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_title_margin_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Margin Bottom - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_title_font_size_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Font Size - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_title_line_height_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Line Height - Mobile",
+        "default": 0
+    },
+     {
+        "type": "range",
+        "id": "section_title_letter_spacing_mobile",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Title Letter Spacing - Mobile",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Text Area Styling"
+    },
+    {
+        "type": "color",
+        "id": "section_textblock_color",
+        "label": "Section Text Area Color"
+    },
+    {
+        "type": "checkbox",
+        "id": "section_textblock_custom_font",
+        "label": "Use Custom Font",
+        "default": false
+    },
+    {
+        "type": "font_picker",
+        "id": "section_textblock_font",
+        "label": "Section Text Area Font",
+        "default": "mono"
+    },
+    {
+        "type": "text",
+        "id": "section_textblock_font_name",
+        "label": "Custom Font Family Name",
+        "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+    },
+    {
+        "type": "select",
+        "id": "section_textblock_font_weight",
+        "options": [
+        {
+            "value": "default",
+            "label": "Default"
+        },
+        {
+            "value": "100",
+            "label": "100"
+        },
+        {
+            "value": "200",
+            "label": "200"
+        },
+        {
+            "value": "300",
+            "label": "300"
+        },
+        {
+            "value": "400",
+            "label": "400 (Regular)"
+        },
+        {
+            "value": "500",
+            "label": "500"
+        },
+        {
+            "value": "600",
+            "label": "600"
+        },
+        {
+            "value": "700",
+            "label": "700 (Bold)"
+        },
+        {
+            "value": "800",
+            "label": "800"
+        },
+        {
+            "value": "900",
+            "label": "900"
+        }
+        ],
+        "default": "default",
+        "label": "Font Weight"
+    },
+    {
+        "type": "paragraph",
+        "content": "Set value to 0 to use your theme's default values:"
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Margin Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Margin Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_font_size",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Font Size",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_line_height",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Line Height",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_letter_spacing",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Letter Spacing",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Text Area Styling - Mobile"
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_margin_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Margin Top - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_margin_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Margin Bottom - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_font_size_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Font Size - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_line_height_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Line Height - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_textblock_letter_spacing_mobile",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Text Area Letter Spacing - Mobile",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Button Styling"
+    },
+    {
+        "type": "checkbox",
+        "id": "section_button_custom_font",
+        "label": "Use Custom Font",
+        "default": false
+    },
+    {
+        "type": "font_picker",
+        "id": "section_button_font",
+        "label": "Section Button Font",
+        "default": "mono"
+    },
+    {
+        "type": "text",
+        "id": "section_button_font_name",
+        "label": "Custom Font Family Name",
+        "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+    },
+    {
+        "type": "select",
+        "id": "section_button_font_weight",
+        "options": [
+        {
+            "value": "default",
+            "label": "Default"
+        },
+        {
+            "value": "100",
+            "label": "100"
+        },
+        {
+            "value": "200",
+            "label": "200"
+        },
+        {
+            "value": "300",
+            "label": "300"
+        },
+        {
+            "value": "400",
+            "label": "400 (Regular)"
+        },
+        {
+            "value": "500",
+            "label": "500"
+        },
+        {
+            "value": "600",
+            "label": "600"
+        },
+        {
+            "value": "700",
+            "label": "700 (Bold)"
+        },
+        {
+            "value": "800",
+            "label": "800"
+        },
+        {
+            "value": "900",
+            "label": "900"
+        }
+        ],
+        "default": "default",
+        "label": "Font Weight"
+    },
+    {
+        "type": "range",
+        "id": "section_button_max_width",
+        "min": 40,
+        "max": 700,
+        "step": 20,
+        "unit": "px",
+        "label": "Section Button Max Width Size",
+        "default": 140
+    },
+    {
+        "type": "range",
+        "id": "section_button_border_width",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Border Width",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_button_radius",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Border Radius",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_button_margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Top Margin",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_button_padding_horizontal",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Horizontal Padding",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_button_padding_vertical",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Vertical Padding",
+        "default": 10
+    },
+    {
+        "type": "range",
+        "id": "section_button_font_size",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Font Size",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_button_letter_spacing",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Letter Spacing",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Button Styling - Mobile"
+    },
+    {
+        "type": "range",
+        "id": "section_button_margin_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Top Margin - Mobile",
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "section_button_font_size_mobile",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Font Size - Mobile",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "section_button_letter_spacing_mobile",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Section Button Letter Spacing - Mobile",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Section Button Colors"
+    },
+    {
+        "type": "color",
+        "id": "section_button_background_color",
+        "label": "Section Button Background Color",
+        "default": "#4C4C4C"
+    },
+    {
+        "type": "color",
+        "id": "section_button_text_color",
+        "label": "Section Button Text Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "section_button_border_color",
+        "label": "Section Button Border Color",
+        "default": "#4C4C4C"
+    },
+    {
+        "type": "header",
+        "content": "Section Button Hover Colors"
+    },
+    {
+        "type": "color",
+        "id": "section_button_background_color_hover",
+        "label": "Section Button Hover Background Color",
+        "default": "#000000"
+    },
+    {
+        "type": "color",
+        "id": "section_button_text_color_hover",
+        "label": "Section Button Hover Text Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "section_button_border_color_hover",
+        "label": "Section Button Hover Border Color",
+        "default": "#000000"
+    },
+    {
+        "type": "header",
+        "content": "Image Sizes"
+    },
+    {
+        "type": "select",
+        "id": "image_size",
+        "options": [
+            {
+                "value": "portrait",
+                "label": "Portrait"
+            },
+            {
+                "value": "square",
+                "label": "Square"
+            },
+            {
+                "value": "original",
+                "label": "Original"
+            }
+        ],
+        "default": "square",
+        "label": "Image Dimensions"
+    },
+    {
+        "type": "range",
+        "id": "image_width",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Image Width",
+        "default": 100
+    },
+     {
+        "type": "range",
+        "id": "image_border_radius",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "unit": "px",
+        "label": "Image Border Radius",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Blocks Styling"
+    },
+    {
+            "type": "select",
+            "id": "carousel_show_titles",
+            "options": [
+                {
+                    "value": "one",
+                    "label": "Active only"
+                },
+                {
+                    "value": "all",
+                    "label": "All"
+                }
+            ],
+            "default": "one",
+            "label": "Display Slide Titles"
+        },
+        {
+            "type": "select",
+            "id": "blocks_text_alignment",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left",
+            "label": "Blocks Text Alignment"
+        },
+        {
+            "type": "select",
+            "id": "blocks_text_alignment_mobile",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left",
+            "label": "Blocks Text Alignment - Mobile"
+        },
+        {
+            "type": "range",
+            "id": "blocks_margin_top",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Blocks Margin Top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "blocks_margin_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Blocks Margin Top - Mobile",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "blocks_margin_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Blocks Margin Bottom",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "blocks_margin_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Blocks Margin Bottom - Mobile",
+            "default": 10
+        },
+        {
+            "type": "header",
+            "content": "Block Title Styling"
+        },
+        {
+            "type": "checkbox",
+            "id": "block_title_display",
+            "label": "Show Slide Title",
+            "default": true
+        },
+        {
+            "type": "select",
+            "id": "block_title_type",
+            "options": [
+                {
+                "value": "h1",
+                "label": "H1"
+                },
+                {
+                "value": "h2",
+                "label": "H2"
+                },
+                {
+                "value": "h3",
+                "label": "H3"
+                },
+                {
+                "value": "h4",
+                "label": "H4"
+                },
+                {
+                "value": "h5",
+                "label": "H5"
+                },
+                {
+                "value": "h6",
+                "label": "H6"
+                }
+            ],
+            "default": "h3",
+            "label": "Block Title HTML Element",
+            "info": "For better SEO"
+        },
+        {
+            "type": "color",
+            "id": "block_title_color",
+            "label": "Block Title Color"
+        },
+        {
+            "type": "checkbox",
+            "id": "block_title_custom_font",
+            "label": "Use Custom Font",
+            "default": false
+        },
+        {
+            "type": "font_picker",
+            "id": "block_title_font",
+            "label": "Block Title Font",
+            "default": "mono"
+        },
+        {
+            "type": "text",
+            "id": "block_title_font_name",
+            "label": "Custom Font Family Name",
+            "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+        },
+        {
+            "type": "select",
+            "id": "block_title_font_weight",
+            "options": [
+            {
+                "value": "default",
+                "label": "Default"
+            },
+            {
+                "value": "100",
+                "label": "100"
+            },
+            {
+                "value": "200",
+                "label": "200"
+            },
+            {
+                "value": "300",
+                "label": "300"
+            },
+            {
+                "value": "400",
+                "label": "400 (Regular)"
+            },
+            {
+                "value": "500",
+                "label": "500"
+            },
+            {
+                "value": "600",
+                "label": "600"
+            },
+            {
+                "value": "700",
+                "label": "700 (Bold)"
+            },
+            {
+                "value": "800",
+                "label": "800"
+            },
+            {
+                "value": "900",
+                "label": "900"
+            }
+            ],
+            "default": "default",
+            "label": "Font Weight"
+        },
+        {
+            "type": "paragraph",
+            "content": "Set value to 0 to use your theme's default values:"
+        },
+        {
+			"type": "range",
+			"id": "block_title_min_height",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"label": "Block Title Min Height",
+            "info": "Use 0 to use automatic height",
+			"default": 0
+		},
+        {
+            "type": "range",
+            "id": "block_title_margin_top",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Block Title Margin Top",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "block_title_margin_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Block Title Margin Bottom",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "block_title_font_size",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Block Title Font Size",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_title_line_height",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Block Title Line Height",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_title_letter_spacing",
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "unit": "px",
+            "label": "Block Title Letter Spacing",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Block Title Styling - Mobile"
+        },
+        {
+			"type": "range",
+			"id": "block_title_min_height_mobile",
+			"min": 0,
+			"max": 200,
+			"step": 2,
+			"unit": "px",
+			"label": "Block Title Min Height - Mobile",
+            "info": "Use 0 to use automatic height",
+			"default": 0
+		},
+        {
+            "type": "range",
+            "id": "block_title_margin_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Block Title Margin Top - Mobile",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "block_title_margin_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Block Title Margin Bottom - Mobile",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "block_title_font_size_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Block Title Font Size - Mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_title_line_height_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Block Title Line Height - Mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_title_letter_spacing_mobile",
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "unit": "px",
+            "label": "Block Title Letter Spacing - Mobile",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Product Price Styling"
+        },        
+        {
+			"type": "checkbox",
+			"id": "product_price_display",
+			"label": "Show Product Price",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "product_price_from",
+			"label": "Show 'From' Price",
+			"info": "If the product has variants, show the 'From' label",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "product_price_from_label",
+			"label": "'From' text field",
+			"default": "From",
+			"info": "In case there are multiple variants with varied pricing"
+		},
+        {
+			"type": "color",
+			"id": "product_price_color",
+			"label": "Product Price Color"
+		},
+		{
+			"type": "checkbox",
+			"id": "product_price_custom_font",
+			"label": "Use Custom Font",
+			"default": false
+		},
+		{
+			"type": "font_picker",
+			"id": "product_price_font",
+			"label": "Product Price Font",
+			"default": "mono"
+		},
+		{
+			"type": "text",
+			"id": "product_price_font_name",
+			"label": "Custom Font Family Name",
+			"info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+		},
+		{
+			"type": "select",
+			"id": "product_price_font_weight",
+			"options": [
+			{
+				"value": "default",
+				"label": "Default"
+			},
+			{
+				"value": "100",
+				"label": "100"
+			},
+			{
+				"value": "200",
+				"label": "200"
+			},
+			{
+				"value": "300",
+				"label": "300"
+			},
+			{
+				"value": "400",
+				"label": "400 (Regular)"
+			},
+			{
+				"value": "500",
+				"label": "500"
+			},
+			{
+				"value": "600",
+				"label": "600"
+			},
+			{
+				"value": "700",
+				"label": "700 (Bold)"
+			},
+			{
+				"value": "800",
+				"label": "800"
+			},
+			{
+				"value": "900",
+				"label": "900"
+			}
+			],
+			"default": "default",
+			"label": "Font Weight"
+		},
+		{
+			"type": "range",
+			"id": "product_price_font_size",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"label": "Product Price Font Size",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "product_price_line_height",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"label": "Product Price Line Height",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "product_price_letter_spacing",
+			"min": 0,
+			"max": 10,
+			"step": 1,
+			"unit": "px",
+			"label": "Product Price Letter Spacing",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "product_price_margin_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"unit": "px",
+			"label": "Product Price Margin Bottom",
+			"default": 10
+		},
+		{
+			"type": "header",
+			"content": "Product Price Styling - Mobile"
+		},
+		{
+			"type": "range",
+			"id": "product_price_font_size_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"label": "Product Price Font Size - Mobile",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "product_price_line_height_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"label": "Product Price Line Height - Mobile",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "product_price_letter_spacing_mobile",
+			"min": 0,
+			"max": 10,
+			"step": 1,
+			"unit": "px",
+			"label": "Product Price Letter Spacing - Mobile",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "product_price_margin_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"unit": "px",
+			"label": "Product Price Margin Bottom - Mobile",
+			"default": 10
+		},
+		{
+            "type": "header",
+            "content": "Product Compare at Price Styling"
+        },
+		{
+            "type": "color",
+            "id": "product_compare_price_color",
+            "label": "Product Compare at Price Color",
+			"default": "#909090"
+        },
+		{
+            "type": "range",
+            "id": "product_compare_price_font_size",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Product Compare at Price Font Size",
+            "default": 0
+        },
+		{
+            "type": "range",
+            "id": "product_compare_price_font_size_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Product Compare at Price Font Size - Mobile",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Button Styling"
+        },
+        {
+            "type": "checkbox",
+            "id": "block_button_display",
+            "label": "Show Block Button",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "block_button_label",
+            "label": "Button Label",
+            "default": "Shop Now"
+        },
+        {
+            "type": "checkbox",
+            "id": "block_button_tab",
+            "label": "Open in a New Tab",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "block_button_custom_font",
+            "label": "Use Custom Font",
+            "default": false
+        },
+        {
+            "type": "font_picker",
+            "id": "block_button_font",
+            "label": "Button Font",
+            "default": "mono"
+        },
+        {
+            "type": "text",
+            "id": "block_button_font_name",
+            "label": "Custom Font Family Name",
+            "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+        },
+        {
+            "type": "select",
+            "id": "block_button_font_weight",
+            "options": [
+            {
+                "value": "default",
+                "label": "Default"
+            },
+            {
+                "value": "100",
+                "label": "100"
+            },
+            {
+                "value": "200",
+                "label": "200"
+            },
+            {
+                "value": "300",
+                "label": "300"
+            },
+            {
+                "value": "400",
+                "label": "400 (Regular)"
+            },
+            {
+                "value": "500",
+                "label": "500"
+            },
+            {
+                "value": "600",
+                "label": "600"
+            },
+            {
+                "value": "700",
+                "label": "700 (Bold)"
+            },
+            {
+                "value": "800",
+                "label": "800"
+            },
+            {
+                "value": "900",
+                "label": "900"
+            }
+            ],
+            "default": "default",
+            "label": "Font Weight"
+        },
+        {
+            "type": "range",
+            "id": "block_button_max_width",
+            "min": 40,
+            "max": 700,
+            "step": 20,
+            "unit": "px",
+            "label": "Button Max Width Size",
+            "default": 140
+        },
+        {
+            "type": "range",
+            "id": "block_button_border_width",
+            "min": 0,
+            "max": 30,
+            "step": 1,
+            "unit": "px",
+            "label": "Button Border Width",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_button_radius",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Button Border Radius",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_button_margin_top",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button Top Margin",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_button_margin_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button Bottom Margin",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_button_padding_horizontal",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Button Horizontal Padding",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "block_button_padding_vertical",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button Vertical Padding",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "block_button_font_size",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "px",
+            "label": "Button Font Size",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_button_letter_spacing",
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "unit": "px",
+            "label": "Button Letter Spacing",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Button Styling - Mobile"
+        },
+        {
+            "type": "range",
+            "id": "block_button_margin_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button Top Margin - Mobile",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "block_button_margin_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button Bottom Margin - Mobile",
+            "default": 20
+        },
+        {
+            "type": "range",
+            "id": "block_button_font_size_mobile",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "px",
+            "label": "Button Font Size - Mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "block_button_letter_spacing_mobile",
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "unit": "px",
+            "label": "Button Letter Spacing - Mobile",
+            "default": 0
+        },
+        {
+            "type": "header",
+            "content": "Button Colors"
+        },
+        {
+            "type": "color",
+            "id": "block_button_background_color",
+            "label": "Button Background Color",
+            "default": "#4C4C4C"
+        },
+        {
+            "type": "color",
+            "id": "block_button_text_color",
+            "label": "Button Text Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "block_button_border_color",
+            "label": "Button Border Color",
+            "default": "#4C4C4C"
+        },
+        {
+            "type": "header",
+            "content": "Button Hover Colors"
+        },
+        {
+            "type": "color",
+            "id": "block_button_background_color_hover",
+            "label": "Button Hover Background Color",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "block_button_text_color_hover",
+            "label": "Button Hover Text Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "block_button_border_color_hover",
+            "label": "Button Hover Border Color",
+            "default": "#000000"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "collection",
+            "name": "Collection",
+            "limit": 1,
+            "settings": [
+                {
+					"type": "collection",
+					"id": "collection",
+					"label": "Choose collection"
+				},
+                {
+                    "type": "range",
+                    "id": "collection_limit",
+                    "min": 1,
+                    "max": 32,
+                    "step": 1,
+                    "label": "Collection Products Amount",
+                    "default": 4
+                }
+            ]
+        },
+        {
+            "type": "product",
+            "name": "Product",
+            "settings": [
+                {
+					"type": "product",
+					"id": "product",
+					"label": "Choose product"
+				},
+                {
+                    "type": "select",
+                    "id": "image_source",
+                    "options": [
+                        {
+                            "value": "product",
+                            "label": "Product"
+                        },
+                        {
+                            "value": "custom",
+                            "label": "Custom"
+                        }
+                    ],
+                    "default": "product",
+                    "label": "Image Source"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "custom_image",
+                    "label": "Custom Image",
+                    "info": "Only available if 'Custom' is selected on Image Source"
+                },
+                {
+                    "type": "select",
+                    "id": "title_source",
+                    "options": [
+                        {
+                            "value": "product",
+                            "label": "Product"
+                        },
+                        {
+                            "value": "custom",
+                            "label": "Custom"
+                        }
+                    ],
+                    "default": "product",
+                    "label": "Title Source"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Only available if 'Custom' is selected on Title Source"
+                }
+            ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "QQ - Alternative Carousel for Products",
+        "blocks": [
+            {
+                "type": "collection"
+            }
+        ]
+      }
+    ]
+  }
+{% endschema %}

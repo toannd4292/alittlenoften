@@ -1,0 +1,188 @@
+/* Trustpilot Widget (Responsive). */
+.trustpilot-widget_responsive {
+  padding: 24px 0px 24px 0px;
+  /* padding: 24px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  font-family: 'Madera', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 120%;
+  text-decoration: none;
+}
+
+.trustpilot-widget_responsive .trustpilot-widget_responsive_stars {
+  width: 100%;
+  margin: 0;
+  /* margin: 0px 12px 0px 0px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trustpilot-widget_responsive .trustpilot-widget_responsive_count {
+  margin: 0;
+  display: none;
+  align-items: center;
+}
+
+.trustpilot-widget_responsive .trustpilot-widget_responsive_stars span {
+  margin: 0px 24px 0px 0px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.trustpilot-widget_responsive .trustpilot-widget_responsive_stars img {
+  width: auto;
+  height: 27px;
+  /* height: 36px; */
+}
+
+.trustpilot-widget_responsive .trustpilot-widget_responsive_count span {
+  margin: 0px 24px 0px 0px;
+  display: none;
+}
+
+.trustpilot-widget_responsive .trustpilot-widget_responsive_count span span {
+  margin: 0;
+  font-weight: 600;
+}
+
+.trustpilot-widget_responsive .trustpilot-widget_responsive_count img {
+  width: auto;
+  height: 36px;
+}
+
+/* Trustpilot Widget (TrustScore). */
+.trustpilot-widget_trustscore {
+  width: fit-content;
+  padding: 24px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  color: #000000;
+  font-family: 'Madera', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 120%;
+  text-decoration: none;
+}
+
+.trustpilot-widget_trustscore .trustpilot-widget_trustscore_information {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.trustpilot-widget_trustscore .trustpilot-widget_trustscore_stars {
+  margin: 24px 0px 0px 0px;
+  /* margin: 24px 0px 24px 0px; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.trustpilot-widget_trustscore .trustpilot-widget_trustscore_count {
+  display: none;
+}
+
+.trustpilot-widget_trustscore .trustpilot-widget_trustscore_stars span {
+  margin: 0px 9px 0px 0px;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.trustpilot-widget_trustscore .trustpilot-widget_trustscore_stars img {
+  margin: 0px 0px 0px 9px;
+  width: auto;
+  height: 36px;
+}
+
+.trustpilot-widget_trustscore .trustpilot-widget_trustscore_count span span {
+  font-weight: 600;
+}
+
+/* Trustpilot Widget (Review Collector). */
+.trustpilot-widget_review-collector {
+  width: fit-content;
+  padding: 18px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #00B67A;
+  border-radius: 4px;
+  color: #000000;
+  font-family: 'Madera', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 120%;
+  text-decoration: none;
+}
+
+.trustpilot-widget_review-collector span {
+  margin: 0px 12px 0px 0px;
+}
+
+.trustpilot-widget_review-collector img {
+  width: auto;
+  height: 24px;
+}
+
+/* Trustpilot Widget (TrustScore with Review Collector). */
+.trustpilot-widget_trustscore_with_review-collector {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.trustpilot-widget_trustscore_with_review-collector .trustpilot-widget_trustscore {
+  padding: 24px 24px 0px 24px;
+  margin: 0px auto 12px auto;
+  text-align: center;
+}
+
+.trustpilot-widget_trustscore_with_review-collector .trustpilot-widget_review-collector {
+  margin: 12px auto 0px auto;
+}
+
+@media screen and (min-width: 640px) {
+  /* Trustpilot Widget (Responsive). */
+  .trustpilot-widget_responsive .trustpilot-widget_responsive_stars {
+      width: auto;
+      margin: 0px 12px 0px 0px;
+      justify-content: flex-start;
+  }
+
+  .trustpilot-widget_responsive .trustpilot-widget_responsive_count {
+      margin: 0px 0px 0px 12px;
+      display: flex;
+  }
+
+  .trustpilot-widget_responsive .trustpilot-widget_responsive_count img {
+    height: 36px;
+  }
+
+  /* Trustpilot Widget (TrustScore with Review Collector). */
+  .trustpilot-widget_trustscore_with_review-collector {
+      width: fit-content;
+      margin: auto;
+      align-items: flex-end;
+      /* align-items: center; */
+      flex-direction: row;
+  }
+
+  .trustpilot-widget_trustscore_with_review-collector .trustpilot-widget_trustscore {
+      margin: 0px 12px 0px 0px;
+      text-align: left;
+  }
+  
+  .trustpilot-widget_trustscore_with_review-collector .trustpilot-widget_review-collector {
+      margin: 0px 0px 0px 12px;
+  }
+}
